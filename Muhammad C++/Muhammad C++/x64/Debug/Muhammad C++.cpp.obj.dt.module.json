@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Muhammad C++\\x64\\Debug\\Muhammad C++.obj",
+            "outputs": [
+                "Muhammad C++\\x64\\Debug\\Muhammad C++.cpp.obj.dt.module.json",
+                "Muhammad C++\\x64\\Debug\\Muhammad C++.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}
