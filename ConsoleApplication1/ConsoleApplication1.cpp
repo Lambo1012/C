@@ -1,21 +1,22 @@
-﻿#include <iostream>
-#include <numbers>
-#include <math.h>
-#include <iomanip>
+﻿#include <iostream>   
+#include <numbers>   
+#include <math.h>   
+#include <iomanip>    
 
-using namespace std;
+using namespace std;  
 
-int main()
+int main()            // главная функция, которая разрешает нам использовать cout и sqrt
 {
-    setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "Russian");  // включаем русскую локаль
 
-    double r;
-    cout << "Введите радиус: ";
-    cin >> r;
+    double a, b, c;                                       // объявляем три переменные для сторон треугольника
+    cout << "Введите сторону a: "; cin >> a;              // выводим подсказку и считываем сторону a 
+    cout << "Введите сторону b: "; cin >> b;              // выводим подсказку и считываем сторону b
+    cout << "Введите сторону c: "; cin >> c;              // выводим подсказку и считываем сторону c
 
-    double C = 2 * numbers::pi * r;      // дл.окр
-    double S = numbers::pi * r * r;      // пл.круга
+    double p = (a + b + c) / 2.0;                         // считаем полупериметр p = (a+b+c)/2 (2.0 — чтобы деление было вещественным
+    double S = sqrt(p * (p - a) * (p - b) * (p - c));     // формула Герона: S = √(p·(p-a)·(p-b)·(p-c)), sqrt — квадратный корень
 
-    cout << "Длина окружности: " << C << endl;
-    cout << "Площадь круга: " << S << endl;
+    cout << fixed << setprecision(2);                     // настраиваем вывод: fixed — не экспонента, setprecision(2) — 2 знака после запятой
+    cout << "Площадь треугольника: " << S << endl;        // выводим результат S и переводим строку (endl)
 }
