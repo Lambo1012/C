@@ -1,22 +1,27 @@
-﻿#include <iostream>   
-#include <numbers>   
-#include <math.h>   
-#include <iomanip>    
+﻿#include <iostream>
 
-using namespace std;  
+using namespace std;
 
-int main()            // главная функция, которая разрешает нам использовать cout и sqrt
-{
-    setlocale(LC_ALL, "Russian");  // включаем русскую локаль
+int main() {
+    setlocale(LC_ALL, "Russian");
 
-    double a, b, c;                                       // объявляем три переменные для сторон треугольника
-    cout << "Введите сторону a: "; cin >> a;              // выводим подсказку и считываем сторону a 
-    cout << "Введите сторону b: "; cin >> b;              // выводим подсказку и считываем сторону b
-    cout << "Введите сторону c: "; cin >> c;              // выводим подсказку и считываем сторону c
+    double a, b;
+    cout << "Введите первое число: ";
+    cin >> a;
+    cout << "Введите второе число: ";
+    cin >> b;
 
-    double p = (a + b + c) / 2.0;                         // считаем полупериметр p = (a+b+c)/2 (2.0 — чтобы деление было вещественным
-    double S = sqrt(p * (p - a) * (p - b) * (p - c));     // формула Герона: S = √(p·(p-a)·(p-b)·(p-c)), sqrt — квадратный корень
+    if (a == b) {
+        cout << "Числа равны: " << a << " = " << b << endl;
+    }
+    else if (a < b) {
+        cout << "Числа в порядке возрастания: " << a << " " << b << endl;
+    }
+    else {
+        cout << "Числа в порядке возрастания: " << b << " " << a << endl;
+    }
 
-    cout << fixed << setprecision(2);                     // настраиваем вывод: fixed — не экспонента, setprecision(2) — 2 знака после запятой
-    cout << "Площадь треугольника: " << S << endl;        // выводим результат S и переводим строку (endl)
+    cin.ignore();
+    cin.get();
+    return 0;
 }
