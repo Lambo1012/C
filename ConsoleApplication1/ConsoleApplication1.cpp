@@ -1,27 +1,39 @@
 ﻿#include <iostream>
-
+#include <windows.h>
 using namespace std;
 
-int main() {
-    setlocale(LC_ALL, "Russian");
-
+int main()
+{
+    SetConsoleOutputCP(1251);
+    SetConsoleCP(1251);
     double a, b;
+    char op;
     cout << "Введите первое число: ";
     cin >> a;
     cout << "Введите второе число: ";
     cin >> b;
+    cout << "Выберите действие (+, -, *, /): ";
+    cin >> op;
 
-    if (a == b) {
-        cout << "Числа равны: " << a << " = " << b << endl;
+    switch (op)
+    {
+    case '+':
+        cout << "Результат: " << a << " + " << b << " = " << a + b << endl;
+        break;
+    case '-':
+        cout << "Результат: " << a << " - " << b << " = " << a - b << endl;
+        break;
+    case '*':
+        cout << "Результат: " << a << " * " << b << " = " << a * b << endl;
+        break;
+    case '/':
+        if (b == 0)
+            cout << "Ошибка: деление на ноль!" << endl;
+        else
+            cout << "Результат: " << a << " / " << b << " = " << a / b << endl;
+        break;
+    default:
+        cout << "Неверное действие!" << endl;
     }
-    else if (a < b) {
-        cout << "Числа в порядке возрастания: " << a << " " << b << endl;
-    }
-    else {
-        cout << "Числа в порядке возрастания: " << b << " " << a << endl;
-    }
-
-    cin.ignore();
-    cin.get();
     return 0;
 }
