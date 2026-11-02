@@ -1,39 +1,30 @@
 ﻿#include <iostream>
-#include <windows.h>
+#include <cstdlib>   // Для rand() и srand()
+#include <ctime>     // Для time()
+#include <clocale>   // Для setlocale
 using namespace std;
 
-int main()
-{
-    SetConsoleOutputCP(1251);
-    SetConsoleCP(1251);
-    double a, b;
-    char op;
-    cout << "Введите первое число: ";
-    cin >> a;
-    cout << "Введите второе число: ";
-    cin >> b;
-    cout << "Выберите действие (+, -, *, /): ";
-    cin >> op;
+int main() {
+    setlocale(LC_ALL, "Russian");   
 
-    switch (op)
-    {
-    case '+':
-        cout << "Результат: " << a << " + " << b << " = " << a + b << endl;
-        break;
-    case '-':
-        cout << "Результат: " << a << " - " << b << " = " << a - b << endl;
-        break;
-    case '*':
-        cout << "Результат: " << a << " * " << b << " = " << a * b << endl;
-        break;
-    case '/':
-        if (b == 0)
-            cout << "Ошибка: деление на ноль!" << endl;
-        else
-            cout << "Результат: " << a << " / " << b << " = " << a / b << endl;
-        break;
-    default:
-        cout << "Неверное действие!" << endl;
+    srand(time(0));             // Инициализация генератора случайных чисел
+    int arr1[5][10], arr2[5][5];
+
+    // Заполняем arr1 случайными числами от 0 до 50
+    for (int i = 0; i < 5; i++)
+        for (int j = 0; j < 10; j++)
+            arr1[i][j] = rand() % 51;   // 51 — чтобы включить 50
+
+    // Заполняем arr2: каждый элемент = сумма двух соседних из arr1
+    for (int i = 0; i < 5; i++)
+        for (int j = 0; j < 5; j++)
+            arr2[i][j] = arr1[i][2 * j] + arr1[i][2 * j + 1];
+
+    // Вывод второго массива
+    cout << "arr2 (5x5):\n";
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++)
+            cout << arr2[i][j] << "\t";  // Табуляция для ровных столбцов
+        cout << endl;                    // Переход на новую строку
     }
-    return 0;
 }
