@@ -1,30 +1,26 @@
 ﻿#include <iostream>
-#include <cstdlib>   // Для rand() и srand()
-#include <ctime>     // Для time()
-#include <clocale>   // Для setlocale
+#include <clocale>
+#include <windows.h>
+
 using namespace std;
 
+// Функция возвращает истину (true), если число положительное (> 0),
+// и ложь (false), если отрицательное (или равно нулю)
+bool isPositive(int n) {
+    // Оператор сравнения вернёт true, если n > 0, и false в противном случае
+    return n > 0;
+}
+
 int main() {
-    setlocale(LC_ALL, "Russian");   
+    setlocale(LC_ALL, "Russian");
 
-    srand(time(0));             // Инициализация генератора случайных чисел
-    int arr1[5][10], arr2[5][5];
+    int num1 = -42;
+    int num2 = -7;
+    int num3 = 10;
 
-    // Заполняем arr1 случайными числами от 0 до 50
-    for (int i = 0; i < 5; i++)
-        for (int j = 0; j < 10; j++)
-            arr1[i][j] = rand() % 51;   // 51 — чтобы включить 50
+    cout << "Число " << num1 << " положительное? " << (isPositive(num1) ? "Да" : "Нет") << endl;
+    cout << "Число " << num2 << " положительное? " << (isPositive(num2) ? "Да" : "Нет") << endl;
+    cout << "Число " << num3 << " положительное? " << (isPositive(num3) ? "Да" : "Нет") << endl;
 
-    // Заполняем arr2: каждый элемент = сумма двух соседних из arr1
-    for (int i = 0; i < 5; i++)
-        for (int j = 0; j < 5; j++)
-            arr2[i][j] = arr1[i][2 * j] + arr1[i][2 * j + 1];
-
-    // Вывод второго массива
-    cout << "arr2 (5x5):\n";
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 5; j++)
-            cout << arr2[i][j] << "\t";  // Табуляция для ровных столбцов
-        cout << endl;                    // Переход на новую строку
-    }
+    return 0;
 }
